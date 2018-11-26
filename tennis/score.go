@@ -12,25 +12,27 @@ func NewScoreBoard() ScoreBoard {
 }
 
 func (s *ScoreBoard) AGetPoint() string {
-	if s.aPoint == 0 {
-		s.aPoint = 15
-	} else if s.aPoint == 15 {
-		s.aPoint = 30
-	} else {
-		s.aPoint = 40
-	}
+	nextPoint := pointCalc(s.aPoint)
+	s.aPoint = nextPoint
 	scoreText := fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
 	return scoreText
 }
 
 func (s *ScoreBoard) BGetPoint() string {
-	if s.bPoint == 0 {
-		s.bPoint = 15
-	} else if s.bPoint == 15 {
-		s.bPoint = 30
-	} else {
-		s.bPoint = 40
-	}
+	nextPoint := pointCalc(s.bPoint)
+	s.bPoint = nextPoint
 	scoreText := fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
 	return scoreText
+}
+
+func pointCalc(point int) int {
+	var nextPoint int
+	if point == 0 {
+		nextPoint = 15
+	} else if point == 15 {
+		nextPoint = 30
+	} else {
+		nextPoint = 40
+	}
+	return nextPoint
 }
