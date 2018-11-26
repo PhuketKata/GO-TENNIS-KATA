@@ -156,3 +156,18 @@ func TestAWINAndBGot40PointWithOutSetPoint(t *testing.T) {
 		t.Errorf("score value should be A WIN but %s", scoreText)
 	}
 }
+
+func TestAWINAndBGot40PointWithSetPoint(t *testing.T) {
+	ScoreBoard := NewScoreBoard()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	scoreText := ScoreBoard.AGetPoint()
+	if scoreText != "A WIN" {
+		t.Errorf("score value should be A WIN but %s", scoreText)
+	}
+}
