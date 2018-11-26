@@ -1,11 +1,11 @@
 package score
 
-import "testing"
+type ScoreBoard struct{}
 
-func TestAGot15AndBGot0(t *testing.T) {
-	scoreBoard := NewScoreBoard()
-	scoreText := scoreBoard.AGetPoint()
-	if scoreText != "15 - 0" {
-		t.Errorf("score value should be 15 - 0 but %s", scoreText)
-	}
+func NewScoreBoard() ScoreBoard {
+	return ScoreBoard{}
+}
+
+func (s ScoreBoard) AGetPoint() string {
+	return "15 - 0"
 }
