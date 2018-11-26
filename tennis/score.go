@@ -1,11 +1,22 @@
 package score
 
-type ScoreBoard struct{}
-
-func NewScoreBoard() ScoreBoard {
-	return ScoreBoard{}
+type ScoreBoard struct {
+	aPoint int
+	bPoint int
 }
 
-func (s ScoreBoard) AGetPoint() string {
-	return "15 - 0"
+func NewScoreBoard() ScoreBoard {
+	return ScoreBoard{0, 0}
+}
+
+func (s *ScoreBoard) AGetPoint() string {
+	var scoreText string
+	if s.aPoint == 0 {
+		s.aPoint = 15
+		scoreText = "15 - 0"
+	} else {
+		s.aPoint = 30
+		scoreText = "30 - 0"
+	}
+	return scoreText
 }
