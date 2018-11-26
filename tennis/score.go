@@ -29,6 +29,8 @@ func (s *ScoreBoard) AGetPoint() string {
 func (s *ScoreBoard) BGetPoint() string {
 	if s.bPoint == 3 && s.aPoint < 3 {
 		return fmt.Sprintf("B WIN")
+	} else if s.bPoint == 4 {
+		return fmt.Sprintf("B WIN")
 	}
 	aPoint, bPoint := pointCalc(s.aPoint, s.bPoint, "B")
 	s.aPoint = aPoint
