@@ -14,9 +14,12 @@ func (s *ScoreBoard) AGetPoint() string {
 	if s.aPoint == 0 {
 		s.aPoint = 15
 		scoreText = "15 - 0"
-	} else {
+	} else if s.aPoint == 15 {
 		s.aPoint = 30
 		scoreText = "30 - 0"
+	} else {
+		s.aPoint = 40
+		scoreText = "40 - 0"
 	}
 	return scoreText
 }
