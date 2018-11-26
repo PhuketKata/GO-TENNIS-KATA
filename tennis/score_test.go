@@ -144,7 +144,7 @@ func TestAGot40AndBGot40AfterLongtimeSetPoint(t *testing.T) {
 	}
 }
 
-func TestAWINAndBGot40PointWithOutSetPoint(t *testing.T) {
+func TestAWINWithOutSetPoint(t *testing.T) {
 	ScoreBoard := NewScoreBoard()
 	ScoreBoard.AGetPoint()
 	ScoreBoard.AGetPoint()
@@ -157,7 +157,7 @@ func TestAWINAndBGot40PointWithOutSetPoint(t *testing.T) {
 	}
 }
 
-func TestAWINAndBGot40PointWithSetPoint(t *testing.T) {
+func TestAWINWithSetPoint(t *testing.T) {
 	ScoreBoard := NewScoreBoard()
 	ScoreBoard.AGetPoint()
 	ScoreBoard.AGetPoint()
@@ -169,5 +169,18 @@ func TestAWINAndBGot40PointWithSetPoint(t *testing.T) {
 	scoreText := ScoreBoard.AGetPoint()
 	if scoreText != "A WIN" {
 		t.Errorf("score value should be A WIN but %s", scoreText)
+	}
+}
+
+func TestBWINWithOutSetPoint(t *testing.T) {
+	ScoreBoard := NewScoreBoard()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	scoreText := ScoreBoard.BGetPoint()
+	if scoreText != "B WIN" {
+		t.Errorf("score value should be B WIN but %s", scoreText)
 	}
 }
