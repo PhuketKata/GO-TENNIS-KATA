@@ -22,3 +22,11 @@ func (s *ScoreBoard) AGetPoint() string {
 	scoreText := fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
 	return scoreText
 }
+
+func (s *ScoreBoard) BGetPoint() string {
+	if s.bPoint == 0 {
+		s.bPoint = 15
+	}
+	scoreText := fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
+	return scoreText
+}
