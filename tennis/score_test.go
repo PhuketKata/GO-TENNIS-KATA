@@ -53,3 +53,16 @@ func TestAGot40AndBGot30(t *testing.T) {
 		t.Errorf("score value should be 40 - 30 but %s", scoreText)
 	}
 }
+
+func TestAGot40AndBGot40(t *testing.T) {
+	ScoreBoard := NewScoreBoard()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	scoreText := ScoreBoard.BGetPoint()
+	if scoreText != "40 - 40" {
+		t.Errorf("score value should be 40 - 40 but %s", scoreText)
+	}
+}
