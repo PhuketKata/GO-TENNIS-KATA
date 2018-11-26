@@ -12,7 +12,11 @@ func NewScoreBoard() ScoreBoard {
 }
 
 func (s *ScoreBoard) AGetPoint() string {
-	s.aPoint++
+	if s.bPoint == 4 {
+		s.bPoint--
+	} else {
+		s.aPoint++
+	}
 	aPointText := pointCalc(s.aPoint)
 	bPointText := pointCalc(s.bPoint)
 	scoreText := fmt.Sprintf("%s - %s", aPointText, bPointText)
