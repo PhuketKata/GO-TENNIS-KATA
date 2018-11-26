@@ -13,36 +13,33 @@ func NewScoreBoard() ScoreBoard {
 
 func (s *ScoreBoard) AGetPoint() string {
 	var scoreText string
-	if s.aPoint == 40 {
-		scoreText = fmt.Sprintf("setpoint - %d", s.bPoint)
+	if s.aPoint == 3 {
+		bPointText := pointCalc(s.bPoint)
+		scoreText = fmt.Sprintf("setpoint - %s", bPointText)
 	} else {
-		nextPoint := pointCalc(s.aPoint)
-		s.aPoint = nextPoint
-		scoreText = fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
+		s.aPoint++
+		aPointText := pointCalc(s.aPoint)
+		bPointText := pointCalc(s.bPoint)
+		scoreText = fmt.Sprintf("%s - %s", aPointText, bPointText)
 	}
 	return scoreText
 }
 
 func (s *ScoreBoard) BGetPoint() string {
 	var scoreText string
-	if s.bPoint == 40 {
-		scoreText = fmt.Sprintf("%d - setpoint", s.aPoint)
+	if s.bPoint == 3 {
+		aPointText := pointCalc(s.aPoint)
+		scoreText = fmt.Sprintf("%s - setpoint", aPointText)
 	} else {
-		nextPoint := pointCalc(s.bPoint)
-		s.bPoint = nextPoint
-		scoreText = fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
+		s.bPoint++
+		aPointText := pointCalc(s.aPoint)
+		bPointText := pointCalc(s.bPoint)
+		scoreText = fmt.Sprintf("%s - %s", aPointText, bPointText)
 	}
 	return scoreText
 }
 
-func pointCalc(point int) int {
-	var nextPoint int
-	if point == 0 {
-		nextPoint = 15
-	} else if point == 15 {
-		nextPoint = 30
-	} else {
-		nextPoint = 40
-	}
-	return nextPoint
+func pointCalc(point int) string {
+	score := [4]string{"0", "15", "30", "40"}
+	return score[point]
 }
