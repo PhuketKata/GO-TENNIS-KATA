@@ -144,7 +144,7 @@ func TestAGot40AndBGot40AfterLongtimeSetPoint(t *testing.T) {
 	}
 }
 
-func TestAWINAndBGot40Point(t *testing.T) {
+func TestAWINAndBGot40PointWithOutSetPoint(t *testing.T) {
 	ScoreBoard := NewScoreBoard()
 	ScoreBoard.AGetPoint()
 	ScoreBoard.AGetPoint()
