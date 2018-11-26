@@ -124,3 +124,22 @@ func TestAGot40AndBGot40AfterBGotSetPoint(t *testing.T) {
 		t.Errorf("score value should be 40 - 40 but %s", scoreText)
 	}
 }
+
+func TestAGot40AndBGot40AfterLongtimeSetPoint(t *testing.T) {
+	ScoreBoard := NewScoreBoard()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	scoreText := ScoreBoard.AGetPoint()
+	if scoreText != "40 - 40" {
+		t.Errorf("score value should be 40 - 40 but %s", scoreText)
+	}
+}
