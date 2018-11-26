@@ -12,9 +12,14 @@ func NewScoreBoard() ScoreBoard {
 }
 
 func (s *ScoreBoard) AGetPoint() string {
-	nextPoint := pointCalc(s.aPoint)
-	s.aPoint = nextPoint
-	scoreText := fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
+	var scoreText string
+	if s.aPoint == 40 {
+		scoreText = fmt.Sprintf("setpoint - %d", s.bPoint)
+	} else {
+		nextPoint := pointCalc(s.aPoint)
+		s.aPoint = nextPoint
+		scoreText = fmt.Sprintf("%d - %d", s.aPoint, s.bPoint)
+	}
 	return scoreText
 }
 
