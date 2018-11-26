@@ -222,3 +222,26 @@ func TestAWINWithLongTimeSetPoint(t *testing.T) {
 		t.Errorf("score value should be A WIN but %s", scoreText)
 	}
 }
+
+func TestBWINWithLongTimeSetPoint(t *testing.T) {
+	ScoreBoard := NewScoreBoard()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	ScoreBoard.AGetPoint()
+	ScoreBoard.BGetPoint()
+	scoreText := ScoreBoard.BGetPoint()
+	if scoreText != "B WIN" {
+		t.Errorf("score value should be B WIN but %s", scoreText)
+	}
+}
