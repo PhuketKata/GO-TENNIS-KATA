@@ -3,16 +3,21 @@ package score
 import "fmt"
 
 type ScoreBoard struct {
-	a int
-	b int
+	a     int
+	b     int
+	isEnd bool
 }
 
 func NewScoreBoard() ScoreBoard {
-	return ScoreBoard{0, 0}
+	return ScoreBoard{0, 0, false}
 }
 
 func (s *ScoreBoard) AGetPoint() string {
+	if s.isEnd {
+		return "error"
+	}
 	if isPlayerMatchPoint(s.a, s.b) {
+		s.isEnd = true
 		return "A WIN"
 	}
 	if isPlayerSetPoint(s.b, s.a) {
@@ -24,7 +29,11 @@ func (s *ScoreBoard) AGetPoint() string {
 }
 
 func (s *ScoreBoard) BGetPoint() string {
+	if s.isEnd {
+		return "error"
+	}
 	if isPlayerMatchPoint(s.b, s.a) {
+		s.isEnd = true
 		return "B WIN"
 	}
 	if isPlayerSetPoint(s.a, s.b) {
