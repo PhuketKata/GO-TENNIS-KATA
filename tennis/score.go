@@ -3,8 +3,8 @@ package score
 import "fmt"
 
 type ScoreBoard struct {
-	aPoint int
-	bPoint int
+	a int
+	b int
 }
 
 func NewScoreBoard() ScoreBoard {
@@ -12,31 +12,31 @@ func NewScoreBoard() ScoreBoard {
 }
 
 func (s *ScoreBoard) AGetPoint() string {
-	if s.aPoint == 3 && s.bPoint < 3 {
+	if s.a == 3 && s.b < 3 {
 		return fmt.Sprintf("A WIN")
-	} else if s.aPoint == 4 {
+	} else if s.a == 4 {
 		return fmt.Sprintf("A WIN")
 	}
-	aPoint, bPoint := pointCalc(s.aPoint, s.bPoint, "A")
-	s.aPoint = aPoint
-	s.bPoint = bPoint
-	aPointText := pointToString(s.aPoint)
-	bPointText := pointToString(s.bPoint)
+	aPoint, bPoint := pointCalc(s.a, s.b, "A")
+	s.a = aPoint
+	s.b = bPoint
+	aPointText := pointToString(s.a)
+	bPointText := pointToString(s.b)
 	scoreText := fmt.Sprintf("%s - %s", aPointText, bPointText)
 	return scoreText
 }
 
 func (s *ScoreBoard) BGetPoint() string {
-	if s.bPoint == 3 && s.aPoint < 3 {
+	if s.b == 3 && s.a < 3 {
 		return fmt.Sprintf("B WIN")
-	} else if s.bPoint == 4 {
+	} else if s.b == 4 {
 		return fmt.Sprintf("B WIN")
 	}
-	aPoint, bPoint := pointCalc(s.aPoint, s.bPoint, "B")
-	s.aPoint = aPoint
-	s.bPoint = bPoint
-	aPointText := pointToString(s.aPoint)
-	bPointText := pointToString(s.bPoint)
+	aPoint, bPoint := pointCalc(s.a, s.b, "B")
+	s.a = aPoint
+	s.b = bPoint
+	aPointText := pointToString(s.a)
+	bPointText := pointToString(s.b)
 	scoreText := fmt.Sprintf("%s - %s", aPointText, bPointText)
 	return scoreText
 }
