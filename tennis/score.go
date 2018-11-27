@@ -12,52 +12,38 @@ func NewScoreBoard() ScoreBoard {
 }
 
 func (s *ScoreBoard) AGetPoint() string {
-	if s.a == 3 && s.b < 3 {
-		return fmt.Sprintf("A WIN")
-	} else if s.a == 4 {
-		return fmt.Sprintf("A WIN")
+	if isPlayerMatchPoint(s.a, s.b) {
+		return "A WIN"
 	}
-	aPoint, bPoint := pointCalc(s.a, s.b, "A")
-	s.a = aPoint
-	s.b = bPoint
-	aPointText := pointToString(s.a)
-	bPointText := pointToString(s.b)
-	scoreText := fmt.Sprintf("%s - %s", aPointText, bPointText)
-	return scoreText
+	if isPlayerSetPoint(s.b, s.a) {
+		s.b = 3
+	} else {
+		s.a++
+	}
+	return fmt.Sprintf("%s - %s", pointToString(s.a), pointToString(s.b))
 }
 
 func (s *ScoreBoard) BGetPoint() string {
-	if s.b == 3 && s.a < 3 {
-		return fmt.Sprintf("B WIN")
-	} else if s.b == 4 {
-		return fmt.Sprintf("B WIN")
+	if isPlayerMatchPoint(s.b, s.a) {
+		return "B WIN"
 	}
-	aPoint, bPoint := pointCalc(s.a, s.b, "B")
-	s.a = aPoint
-	s.b = bPoint
-	aPointText := pointToString(s.a)
-	bPointText := pointToString(s.b)
-	scoreText := fmt.Sprintf("%s - %s", aPointText, bPointText)
-	return scoreText
-}
-
-func pointCalc(aPoint int, bPoint int, lastPoint string) (int, int) {
-	if aPoint == 4 && lastPoint == "B" {
-		nextApoint := aPoint - 1
-		return nextApoint, bPoint
-	} else if bPoint == 4 && lastPoint == "A" {
-		nextBpoint := bPoint - 1
-		return aPoint, nextBpoint
-	} else if lastPoint == "A" {
-		nextApoint := aPoint + 1
-		return nextApoint, bPoint
+	if isPlayerSetPoint(s.a, s.b) {
+		s.a = 3
 	} else {
-		nextBpoint := bPoint + 1
-		return aPoint, nextBpoint
+		s.b++
 	}
+	return fmt.Sprintf("%s - %s", pointToString(s.a), pointToString(s.b))
 }
 
 func pointToString(point int) string {
 	score := [5]string{"0", "15", "30", "40", "setpoint"}
 	return score[point]
+}
+
+func isPlayerMatchPoint(playerScore1 int, playerScore2 int) bool {
+	return (playerScore1 == 3 && playerScore2 < 3) || (playerScore1 == 4 && playerScore2 == 3)
+}
+
+func isPlayerSetPoint(playerScore1 int, playerScore2 int) bool {
+	return playerScore1 == 4 && playerScore2 == 3
 }
